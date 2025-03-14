@@ -1,0 +1,29 @@
+{
+  "name": "insuredminetask2",
+  "version": "1.0.0",
+  "description": "Track real-time CPU utilization of the node server and on 70% usage restart the server. create post-service.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "keywords": [
+    "nodejs",
+    "express.js",
+    "mongodb"
+  ],
+  "author": "Sambit Kumar Nayak",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  },
+  "dependencies": {
+    "body-parser": "^1.20.3",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "mongoose": "^8.12.1",
+    "node-cron": "^3.0.3",
+    "pm2": "^5.4.3"
+  }
+}
