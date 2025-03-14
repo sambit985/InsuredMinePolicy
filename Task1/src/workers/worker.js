@@ -10,7 +10,6 @@ const PolicyInfo = require('../models/policyInfo');
 const PolicyCarrier = require('../models/policyCarrier');
 const UserAccount = require('../models/userAccount');
 
-console.log("🚀 Worker thread started with file:", workerData.filePath);
 
 async function processFile() {
   try {
@@ -32,12 +31,11 @@ async function processFile() {
       throw new Error("No data found in the file.");
     }
 
-    console.log(`✅ Parsed ${data.length} records from file.`);
 
     await saveData(data);
+    //delete file after complete process
     fs.unlinkSync(filePath);
 
-    console.log("✅ File processing complete.");
     parentPort.postMessage({ message: 'File processed successfully', count: data.length });
 
   } catch (error) {
@@ -52,7 +50,6 @@ function parseCSV(filePath) {
     fs.createReadStream(filePath)
       .pipe(csv())
       .on('data', (row) => {
-        console.log("📌 Parsed row:", row);
         results.push(row);
       })
       .on('end', () => {
@@ -71,7 +68,6 @@ function parseXLSX(filePath) {
 
 async function saveData(data) {
     try {
-      console.log("💾 Preparing bulk insert for MongoDB...");
   
       const users = [];
       const agents = [];
@@ -121,7 +117,6 @@ async function saveData(data) {
         });
       }
   
-      console.log(`💾 Inserting ${users.length} users, ${agents.length} agents, and other records...`);
   
       await Promise.allSettled([
         User.insertMany(users),
