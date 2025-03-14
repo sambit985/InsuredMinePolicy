@@ -38,3 +38,13 @@ project-root/
 │   │   ├── worker.js
 │── uploads/
 
+## 🛠 Key Features
+
+1. **File Upload API** → Uploads XLSX/CSV data into MongoDB efficiently using **worker threads** (ensuring non-blocking operations).  
+2. **Search API** → Retrieves **policy information based on the username**.  
+3. **Aggregation API** → Provides **aggregated policy count per user**.  
+4. **Well-Structured MongoDB Collections** → Each entity (users, policyinfos, agents, policycarriers, policycategories, etc.) is stored separately for **better query optimization**.  
+5. **POST Requests Instead of GET** → Ensures **security and scalability** by handling sensitive data in request bodies rather than exposing it in URLs.  
+6. **Modular Code Structure** → Organized into separate **config, models, controllers, routes, and workers**, making it easy to scale and maintain.  
+
+---
